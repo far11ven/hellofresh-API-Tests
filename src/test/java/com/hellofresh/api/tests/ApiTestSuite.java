@@ -1,7 +1,7 @@
 package com.hellofresh.api.tests;
 
 
-import org.junit.Assert;
+import org.testng.Assert;
 import org.testng.annotations.*;
 import com.hellofresh.api.utils.ApiUtils;
 
@@ -18,9 +18,9 @@ public class ApiTestSuite extends BaseTest{
 		testUtils.checkStatusIs(res, 200);
 
 		//Check that US, DE & GB countries are present in the response
-		Assert.assertTrue("US Wasn't present in the list", testUtils.isCountryPresent(jp, "US"));
-		Assert.assertTrue("DE Wasn't present in the list", testUtils.isCountryPresent(jp, "DE"));
-		Assert.assertTrue("GB Wasn't present in the list", testUtils.isCountryPresent(jp, "GB"));
+		Assert.assertTrue(testUtils.isCountryPresent(jp, "US"), "US Wasn't present in the list");
+		Assert.assertTrue(testUtils.isCountryPresent(jp, "DE"), "DE Wasn't present in the list");
+		Assert.assertTrue(testUtils.isCountryPresent(jp, "GB"), "GB Wasn't present in the list");
 	}
 
 	@Test
@@ -35,7 +35,7 @@ public class ApiTestSuite extends BaseTest{
 		testUtils.checkStatusIs(res, 200);
 		
 		//Check if the HTTP response has message "Country found matching code"
-		Assert.assertTrue("Country with code US is not found", testUtils.checkCountryFound(res, "US"));
+		Assert.assertTrue(testUtils.checkCountryFound(res, "US"), "Country with code US is not found");
 
 	}
 	
@@ -51,7 +51,7 @@ public class ApiTestSuite extends BaseTest{
 		testUtils.checkStatusIs(res, 200);
 		
 		//Check if the HTTP response has message "Country found matching code"
-		Assert.assertTrue("Country with code DE is not found", testUtils.checkCountryFound(res, "DE"));
+		Assert.assertTrue(testUtils.checkCountryFound(res, "DE"), "Country with code DE is not found");
 
 	}
 	
@@ -67,7 +67,7 @@ public class ApiTestSuite extends BaseTest{
 		testUtils.checkStatusIs(res, 200);
 		
 		//Check if the HTTP response has message "Country found matching code"
-		Assert.assertTrue("Country with code GB is not found", testUtils.checkCountryFound(res, "GB"));
+		Assert.assertTrue(testUtils.checkCountryFound(res, "GB"), "Country with code GB is not found");
 
 	}
 	
