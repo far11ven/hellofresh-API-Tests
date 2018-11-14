@@ -9,32 +9,66 @@ import com.hellofresh.api.utils.ApiUtils;
 public class ApiTestSuite extends BaseTest{
 
 	@Test
-	public void T01_GETCountriesTest() {
+	public void T01_GETAllCountriesTest() {
 
 		res = ApiUtils.getResponsebyPath("/all");
 		jp = ApiUtils.getJsonPath(res);
 
-		//Check if the HTTP Status received in response was 200
+		//verify if the HTTP Status received in response was 200
 		testUtils.checkStatusIs(res, 200);
 
-		//verify that US, DE & GB countries are present in the response
+		//Check that US, DE & GB countries are present in the response
 		Assert.assertTrue("US Wasn't present in the list", testUtils.isCountryPresent(jp, "US"));
 		Assert.assertTrue("DE Wasn't present in the list", testUtils.isCountryPresent(jp, "DE"));
 		Assert.assertTrue("GB Wasn't present in the list", testUtils.isCountryPresent(jp, "GB"));
 	}
 
 	@Test
-	public void T02_GETIndividualCountryTestforUS() {
+	public void T02a_GETIndividualCountryTestforUS() {
 
 		ApiUtils.setBasePath("/get/iso2code");
 
 		res = ApiUtils.getResponsebyPath("/US");
 		jp = ApiUtils.getJsonPath(res);
-		
-		System.out.println(" ==> " + res.asString());
 
 		//Check if the HTTP Status received in response was 200
 		testUtils.checkStatusIs(res, 200);
+		
+		//Check if the HTTP response has message "Country found matching code"
+		Assert.assertTrue("Country with code US is not found", testUtils.checkCountryFound(res, "US"));
+
+	}
+	
+	@Test
+	public void T02b_GETIndividualCountryTestforDE() {
+
+		ApiUtils.setBasePath("/get/iso2code");
+
+		res = ApiUtils.getResponsebyPath("/DE");
+		jp = ApiUtils.getJsonPath(res);
+
+		//Check if the HTTP Status received in response was 200
+		testUtils.checkStatusIs(res, 200);
+		
+		//Check if the HTTP response has message "Country found matching code"
+		Assert.assertTrue("Country with code DE is not found", testUtils.checkCountryFound(res, "DE"));
+
+	}
+	
+	@Test
+	public void T02c_GETIndividualCountryTestforGB() {
+
+		ApiUtils.setBasePath("/get/iso2code");
+
+		res = ApiUtils.getResponsebyPath("/GB");
+		jp = ApiUtils.getJsonPath(res);
+
+		//Check if the HTTP Status received in response was 200
+		testUtils.checkStatusIs(res, 200);
+		
+		//Check if the HTTP response has message "Country found matching code"
+		Assert.assertTrue("Country with code GB is not found", testUtils.checkCountryFound(res, "GB"));
+
 	}
 	
 	
