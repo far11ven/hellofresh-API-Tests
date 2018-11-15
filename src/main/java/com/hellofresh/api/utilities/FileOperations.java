@@ -9,8 +9,14 @@ import java.io.FileWriter;
 import java.io.IOException;
 import java.io.FileReader;
 
-
+/*
+ * This class provides instance of FileOperations for reading/writing data from a text file
+*/
 public class FileOperations {
+	
+	/*
+	 * This method writes 'content' to file specified by 'filePath'
+	*/
 
 	public static void writeToFile(String filePath, String content) {
 		try {
@@ -29,19 +35,15 @@ public class FileOperations {
 			System.out.println("Problem in Writing");
 
 		}
-
-
 	}
-
-	public static String readFromFile(String filePath) {
+	
+	/*
+	 * This method reads 'content' from file specified by 'filePath'
+	*/
+	@SuppressWarnings("resource")
+	public static String readFromFile(String filePath) throws FileNotFoundException {
 		BufferedReader br = null;
-		try {
-			br = new BufferedReader(new FileReader(new File(filePath)));
-		} catch (FileNotFoundException e) {
-			// TODO Auto-generated catch block
-			e.printStackTrace();
-		}
-
+		br = new BufferedReader(new FileReader(new File(filePath)));
 
 		try {
 			StringBuilder sb = new StringBuilder();
@@ -59,55 +61,9 @@ public class FileOperations {
 		}	/*finally {
 			br.close();
 		}*/	
-		
+
 		return null;
 	}
 
-	/*public static String readFromFile(String filePath) {
-		BufferedReader br = null;
-		FileReader fr = null;
-
-		String finalContent = null;
-		String content = null;
-
-		try {
-
-			//br = new BufferedReader(new FileReader(FILENAME));
-			fr = new FileReader(filePath);
-			br = new BufferedReader(fr);
-
-			while ((content = br.readLine()) != null) {
-
-				finalContent = finalContent + content;
-
-			}
-
-			return content;
-
-		} catch (IOException e) {
-
-			e.printStackTrace();
-
-		} finally {
-
-			try {
-
-				if (br != null)
-					br.close();
-
-				if (fr != null)
-					fr.close();
-
-			} catch (IOException ex) {
-
-				ex.printStackTrace();
-
-			}
-
-		}
-		return content;
-
-	}
-	 */
 
 }

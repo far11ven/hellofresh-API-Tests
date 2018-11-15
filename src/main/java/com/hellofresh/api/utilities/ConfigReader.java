@@ -5,14 +5,23 @@ import java.io.FileNotFoundException;
 import java.io.IOException;
 import java.util.Properties;
 
+/*
+ * This class provides instance of ConfigReader for reading values from "config.properties"
+*/
 public class ConfigReader {
 
 	String filePath = null;
-
+	
+	/*
+	 * This method is constructor which initializes the filePath variable
+	*/
 	public ConfigReader(String filePath) {
 		this.filePath = filePath;
 	}
-
+	
+	/*
+	 * This method provides reading values from "config.properties", takes one parameter "propName" whose value needs to be returned
+	*/
 	public String getProperty(String propertyName) {
 		String propertyValue = null;
 
@@ -29,8 +38,8 @@ public class ConfigReader {
 		try {
 			pro.load(fis);
 		} catch (IOException e) {
-			// TODO Auto-generated catch block
 			e.printStackTrace();
+			
 		}
 
 		propertyValue = pro.getProperty(propertyName);

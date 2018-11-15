@@ -1,4 +1,4 @@
-package com.hellofresh.api.utils;
+package com.hellofresh.api.utilities;
 
 /*
  * This class provides custom RuntimeException

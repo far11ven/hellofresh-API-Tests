@@ -1,4 +1,4 @@
-package com.hellofresh.api.utils;
+package com.hellofresh.api.utilities;
 
 import java.io.BufferedWriter;
 import java.io.File;
@@ -15,18 +15,18 @@ import org.apache.log4j.Level;
 import org.apache.log4j.Logger;
 import org.apache.log4j.PropertyConfigurator;
 
-import com.hellofresh.api.utils.TestFailedException;
+import com.hellofresh.api.utilities.TestFailedException;
 
 /*
  * This class provides instance of LogUtils for Logging capabilities
  */
-public class LogUtils {
+public class LOGGERUtil {
 
 	private Logger logger;
 	private String logFilePath;
 	private String fileName;
 
-	public LogUtils(Class<?> ClassName) {
+	public LOGGERUtil(Class<?> ClassName) {
 
 		Properties props = new Properties();
 		try {

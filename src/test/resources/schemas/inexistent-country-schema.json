@@ -1,0 +1,22 @@
+{
+    "type": "object",
+    "$schema": "http://json-schema.org/draft-03/schema",
+    "title": "root",
+    "id": "http://jsonschema.net",
+    "required": true,
+    "properties": {
+        "RestResponse": {
+            "type": "object",
+            "id": "http://jsonschema.net/greeting",
+            "required": true,
+            "additionalProperties": false,
+            "properties": {
+                "messages": {
+                    "type": "array",
+                    "id": "http://jsonschema.net/greeting/firstName",
+                    "required": true
+                }
+            }
+        }
+    }
+}
