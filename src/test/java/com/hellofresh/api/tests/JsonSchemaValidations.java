@@ -4,7 +4,6 @@ import com.github.fge.jsonschema.cfg.ValidationConfiguration;
 import com.github.fge.jsonschema.main.JsonSchemaFactory;
 import io.restassured.module.jsv.JsonSchemaValidator;
 import org.apache.commons.io.IOUtils;
-import org.junit.Test;
 
 import java.io.IOException;
 import java.io.InputStream;
@@ -18,7 +17,7 @@ import static org.hamcrest.Matchers.*;
 
 public class JsonSchemaValidations{
 
-	@Test 
+	/*@Test 
 	public void matches_string_schema_correctly() throws IOException {
 		// Given
 		String schema = IOUtils.toString(Thread.currentThread().getContextClassLoader().getResourceAsStream("products-schema.json"));
@@ -57,7 +56,7 @@ public class JsonSchemaValidations{
 
 	@Test 
 	public void throws_assertion_error_when_schema_doesnt_match_json_content() throws IOException {
-		/*exception.expect(AssertionError.class);
+		exception.expect(AssertionError.class);
 		exception.expectMessage("The content to match the given JSON schema.\n" +
 				"error: instance type (object) does not match any allowed primitive type (allowed: [\"array\"])\n" +
 				"    level: \"error\"\n" +
@@ -100,7 +99,7 @@ public class JsonSchemaValidations{
 				"}");
 
 		// When
-		*/get("/jsonStore").then().assertThat().body(JsonSchemaValidator.matchesJsonSchemaInClasspath("products-schema.json").using(settings().parseUriAndUrlsAsJsonNode(true)));
+		get("/jsonStore").then().assertThat().body(JsonSchemaValidator.matchesJsonSchemaInClasspath("products-schema.json").using(settings().parseUriAndUrlsAsJsonNode(true)));
 	}
 
 	@Test public void
@@ -175,5 +174,5 @@ public class JsonSchemaValidations{
 		get("/greetJSON").
 		then().
 		body(JsonSchemaValidator.matchesJsonSchemaInClasspath("greeting-schema.json"));
-	}
+	}*/
 }

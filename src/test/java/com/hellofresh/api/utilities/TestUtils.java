@@ -4,8 +4,6 @@ package com.hellofresh.api.utilities;
 
 import java.util.ArrayList;
 import java.util.HashMap;
-
-import org.json.JSONArray;
 import org.testng.Assert;
 
 import com.hellofresh.api.utils.ApiUtils;
@@ -21,14 +19,14 @@ public class TestUtils {
 		Assert.assertEquals(res.getStatusCode(), statusCode, "HTTP Response Status Check Failed!");
 	}
 
-	//This method checks if a Country is present in response
-	public boolean isCountryPresent (JsonPath jp, String countryCode) {
+	//This method checks if a Country Code is present in response
+	public boolean isCountryCodePresent (JsonPath jp, String countryCode) {
 
-		ArrayList clientList = jp.get("RestResponse.result");
+		ArrayList<Object> clientList = jp.get("RestResponse.result");
 
 		for(int i=0; i < clientList.size(); i++) {
 
-			HashMap fetchedCountry = jp.get("RestResponse.result[" + i + "]");
+			HashMap<Object,Object> fetchedCountry = jp.get("RestResponse.result[" + i + "]");
 
 			if(fetchedCountry.get("alpha2_code").equals(countryCode)) {
 				return true;
@@ -44,14 +42,14 @@ public class TestUtils {
 	}
 
 	//This method verifies the http response message for "Country Found"
-	public boolean checkCountryFound(Response res, String countryCode) {
+	public boolean checkCountryFoundMessage(Response res, String countryCode) {
 		
 		String successMessage = "Country found matching code [" + countryCode + "].";
 		
 		JsonPath jp = ApiUtils.getJsonPath(res);
-		ArrayList fetchedCountry = jp.get("RestResponse.messages");
+		ArrayList<Object> fetchedCountryObject = jp.get("RestResponse.messages");
 		
-		if(fetchedCountry.get(0).equals(successMessage)) {
+		if(fetchedCountryObject.get(0).equals(successMessage)) {
 			
 			return true;
 		} else {

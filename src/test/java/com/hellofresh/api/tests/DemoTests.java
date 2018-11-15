@@ -5,9 +5,6 @@ import static io.restassured.module.jsv.JsonSchemaValidator.matchesJsonSchema;
 import java.util.HashMap;
 import java.util.Map;
 
-import org.junit.Assert;
-import org.junit.Test;
-
 import com.hellofresh.api.commonUtils.MyThreadLocal;
 import com.hellofresh.api.utilities.FileOperations;
 
@@ -17,7 +14,7 @@ import io.restassured.response.Response;
 import io.restassured.specification.RequestSpecification;
 
 public class DemoTests {
-
+/*
 	@Test
 	public void testingGETMethod() {
 		MyThreadLocal.get().saveData("property1", "gsahgdsagjhghjsaghdgsahdgs");
@@ -49,7 +46,7 @@ public class DemoTests {
 
 	}
 
-	/*@Test
+	@Test
 	public void testingPOSTMethod() {
 
 		System.out.println("Running Demo Test2  (POST) ====");
@@ -69,7 +66,7 @@ public class DemoTests {
 		//String successCode = response.jsonPath().get("SuccessCode");
 		//Assert.assertEquals(successCode, "OPERATION_SUCCESS", "Correct Success code was returned");
 
-	}*/
+	}
 
 	@Test
 	public void testingPOSTMethod() {
@@ -79,12 +76,12 @@ public class DemoTests {
 		RestAssured.baseURI ="https://jsonplaceholder.typicode.com";
 		RequestSpecification httpRequest = RestAssured.given();
 
-		/*JSONObject requestParams = new JSONObject();
+		JSONObject requestParams = new JSONObject();
 
 		requestParams.put("userId", 76818); // Cast
 		requestParams.put("id", 76818);
 		requestParams.put("title", "sdimpleuser2dd2011");
-		requestParams.put("body", "password1");*/
+		requestParams.put("body", "password1");
 
 		String requestParams = FileOperations.readFromFile("./src/test/resources/requestBody1.json");
 
@@ -114,7 +111,7 @@ public class DemoTests {
 	}
 
 
-	/*@Test
+	@Test
 	public void testingPUTMethod() {
 
 		System.out.println("Running Demo Test2  (POST) ====");
@@ -141,9 +138,9 @@ public class DemoTests {
 		String responseHeaders = response.getHeaders().toString();
 
 
-	}*/
+	}
 
-	/*@Test
+	@Test
 	public void testingPOSTDEMOQAMethod() {
 
 		System.out.println("Running Demo Test2  (POST - demoqa) ====");
@@ -165,9 +162,9 @@ public class DemoTests {
 		Assert.assertEquals(statusCode, "201");
 		String successCode = response.jsonPath().get("SuccessCode");
 		Assert.assertEquals( "Correct Success code was returned", successCode, "OPERATION_SUCCESS");
-	}*/
+	}
 
-	/*@Test
+	@Test
 	public void testingPOSTMethod() {
 
 		System.out.println("Running Demo Test1 (POST) ====");
@@ -188,6 +185,6 @@ public class DemoTests {
 		System.out.println("Response Body is =>  " + responseBody);
 
 
-	}*/
-
+	}
+*/
 }
