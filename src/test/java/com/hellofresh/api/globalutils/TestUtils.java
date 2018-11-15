@@ -1,4 +1,4 @@
-package com.hellofresh.api.utilities;
+package com.hellofresh.api.globalutils;
 
 import static io.restassured.module.jsv.JsonSchemaValidator.matchesJsonSchema;
 
@@ -10,7 +10,8 @@ import org.testng.Assert;
 
 import com.google.common.base.Joiner;
 import com.google.common.collect.Iterables;
-import com.hellofresh.api.utilities.ApiUtils;
+import com.hellofresh.api.globalutils.ApiUtils;
+import com.hellofresh.api.utilities.FileOperations;
 import com.hellofresh.api.utilities.LOGGERUtil;
 
 import io.restassured.path.json.JsonPath;

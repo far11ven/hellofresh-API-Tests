@@ -1,4 +1,4 @@
-package com.hellofresh.api.utilities;
+package com.hellofresh.api.globalutils;
 
 import io.restassured.RestAssured;
 import io.restassured.http.ContentType;

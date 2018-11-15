@@ -4,10 +4,10 @@ import org.testng.annotations.AfterClass;
 import org.testng.annotations.AfterMethod;
 import org.testng.annotations.BeforeClass;
 
-import com.hellofresh.api.utilities.ApiUtils;
+import com.hellofresh.api.globalutils.ApiUtils;
+import com.hellofresh.api.globalutils.TestUtils;
 import com.hellofresh.api.utilities.ConfigReader;
 import com.hellofresh.api.utilities.LOGGERUtil;
-import com.hellofresh.api.utilities.TestUtils;
 
 import io.restassured.http.ContentType;
 import io.restassured.path.json.JsonPath;

@@ -3,7 +3,7 @@ package com.hellofresh.api.tests;
 import org.testng.Assert;
 import org.testng.annotations.*;
 
-import com.hellofresh.api.utilities.ApiUtils;
+import com.hellofresh.api.globalutils.ApiUtils;
 import com.hellofresh.api.utilities.LOGGERUtil;
 import java.util.HashMap;
 import java.util.Map;
