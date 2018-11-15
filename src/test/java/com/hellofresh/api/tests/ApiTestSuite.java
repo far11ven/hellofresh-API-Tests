@@ -1,7 +1,10 @@
 package com.hellofresh.api.tests;
 
 
+<<<<<<< HEAD
 import org.hamcrest.Matchers;
+=======
+>>>>>>> ec6b1e66cdda680ff507ffe2b33408253d25c4db
 import org.testng.Assert;
 import org.testng.annotations.*;
 import com.hellofresh.api.utils.ApiUtils;
@@ -23,10 +26,17 @@ public class ApiTestSuite extends BaseTest{
 		//verify if the HTTP Status received in response was 200
 		testUtils.checkStatusIs(res, 200);
 
+<<<<<<< HEAD
 		//Check that US, DE & GB country code are present in the response
 		Assert.assertTrue(testUtils.isCountryCodePresent(jp, "US"), "US Wasn't present in the list");
 		Assert.assertTrue(testUtils.isCountryCodePresent(jp, "DE"), "DE Wasn't present in the list");
 		Assert.assertTrue(testUtils.isCountryCodePresent(jp, "GB"), "GB Wasn't present in the list");
+=======
+		//Check that US, DE & GB countries are present in the response
+		Assert.assertTrue(testUtils.isCountryPresent(jp, "US"), "US Wasn't present in the list");
+		Assert.assertTrue(testUtils.isCountryPresent(jp, "DE"), "DE Wasn't present in the list");
+		Assert.assertTrue(testUtils.isCountryPresent(jp, "GB"), "GB Wasn't present in the list");
+>>>>>>> ec6b1e66cdda680ff507ffe2b33408253d25c4db
 	}
 
 	@Test
@@ -41,10 +51,14 @@ public class ApiTestSuite extends BaseTest{
 		testUtils.checkStatusIs(res, 200);
 
 		//Check if the HTTP response has message "Country found matching code"
+<<<<<<< HEAD
 		Assert.assertTrue(testUtils.checkCountryFoundMessage(res, "US"), "Country with code US is not found");
 		
 		//Check if the HTTP response has Country code in Result OBJECT
 		Assert.assertTrue(testUtils.isCountryCodePresent(jp, "US"), "US Wasn't present in the list");
+=======
+		Assert.assertTrue(testUtils.checkCountryFound(res, "US"), "Country with code US is not found");
+>>>>>>> ec6b1e66cdda680ff507ffe2b33408253d25c4db
 
 	}
 
@@ -60,10 +74,14 @@ public class ApiTestSuite extends BaseTest{
 		testUtils.checkStatusIs(res, 200);
 
 		//Check if the HTTP response has message "Country found matching code"
+<<<<<<< HEAD
 		Assert.assertTrue(testUtils.checkCountryFoundMessage(res, "DE"), "Country with code DE is not found");
 		
 		//Check if the HTTP response has Country code in Result OBJECT
 		Assert.assertTrue(testUtils.isCountryCodePresent(jp, "DE"), "DE Wasn't present in the list");
+=======
+		Assert.assertTrue(testUtils.checkCountryFound(res, "DE"), "Country with code DE is not found");
+>>>>>>> ec6b1e66cdda680ff507ffe2b33408253d25c4db
 
 	}
 
@@ -79,6 +97,7 @@ public class ApiTestSuite extends BaseTest{
 		testUtils.checkStatusIs(res, 200);
 
 		//Check if the HTTP response has message "Country found matching code"
+<<<<<<< HEAD
 		Assert.assertTrue(testUtils.checkCountryFoundMessage(res, "GB"), "Country with code GB is not found");
 		
 		//Check if the HTTP response has Country code in Result OBJECT
@@ -86,6 +105,9 @@ public class ApiTestSuite extends BaseTest{
 		
 	}
 
+=======
+		Assert.assertTrue(testUtils.checkCountryFound(res, "GB"), "Country with code GB is not found");
+>>>>>>> ec6b1e66cdda680ff507ffe2b33408253d25c4db
 
 	@Test
 	public void post_test() {
