@@ -1,28 +1,28 @@
-##API Automation Tests - Task#2
+## API Automation Tests - Task#2
 
 
 This framework uses Rest-Assured Library With TestNG for API Testing 
 
 - For logging Log4J is used
-- All tests are stored in "ApiTestSuite" class, under package "com.hellofresh.api.tests" under Under ```src/test/java```
-- "com.hellofresh.api.globalutils" package which contains test helper methods
-- All utility classes are stored in "com.hellofresh.api.utilities" under Under ```src/main/java```
-- "config.properties" contains all the configuration settings
-- Schemas against which response validation are done under "schemas" folder in ```src/test/resources``` package
+- All tests are stored in ```"ApiTestSuite" class```, under package ```"com.hellofresh.api.tests"``` under Under ```src/test/java```
+- ```"com.hellofresh.api.globalutils"``` package which contains test helper methods
+- All utility classes are stored in ```"com.hellofresh.api.utilities"``` under Under ```src/main/java```
+- ```"config.properties"``` contains all the configuration settings
+- Schemas against which response validation are done under ```"schemas"``` folder in ```src/test/resources``` package
 
 
-**Tasks Mapping:**
+**Task Mapping:**
 
 1) Task#1 : ApiTestSuite test method *T01_GET_AllCountriesTest*
-2) Task#2 : ApiTestSuite test method *T02a_GET_IndividualCountryTestforGB* , *T02b_GET_IndividualCountryTestforGB* , *T02c_GET_IndividualCountryTestforGB*
+2) Task#2 : ApiTestSuite test method *T02a_GET_IndividualCountryTestforGB*, *T02b_GET_IndividualCountryTestforGB*,          *T02c_GET_IndividualCountryTestforGB*
 3) Task#3 : ApiTestSuite test method *T03_GET_InexistentCountryTest*
 3) Task#4 : ApiTestSuite test method *T04_POST_AddNewCountryTest*
 
-##How To Run:
+## How To Run:
 
  **Method#1**
- - Goto src/test/java > com.hellofresh.api.tests"
- - Right click on "ApiTestSuite.java" > Run As > TestNG Test
+ - Goto ```src/test/java ``` > ```com.hellofresh.api.tests"```
+ - Right click on ```"ApiTestSuite.java"``` > ```Run As``` > ```TestNG Test```
  
  
  **Method#2**
