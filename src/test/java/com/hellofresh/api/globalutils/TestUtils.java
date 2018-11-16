@@ -7,6 +7,7 @@ import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.HashMap;
 import org.testng.Assert;
+import org.testng.annotations.DataProvider;
 
 import com.google.common.base.Joiner;
 import com.google.common.collect.Iterables;
@@ -105,7 +106,6 @@ public class TestUtils {
 
 		JsonPath jp = ApiUtils.getJsonPath(res);
 		ArrayList<Object> fetchedCountryObject = jp.get("RestResponse.messages");
-
 		if(fetchedCountryObject.get(0).equals(successMessage)) {
 
 			return true;
@@ -129,6 +129,7 @@ public class TestUtils {
 		return false;
 	}
 
+	//Fetches POST request body from postRequestBody.json
 	public String getPostRequestBody(String fileName) {
 		try {
 
@@ -141,5 +142,25 @@ public class TestUtils {
 
 		}
 		return null;
+	}
+
+	//provides test data for test T02_GET_IndividualCountryTestforCountryCodes
+	@DataProvider(name="validCountryCodes")
+	public Object[] createValidCountries() {
+		return new Object[] {
+				"US",
+				"DE",
+				"GB"
+		};
+	}
+
+	//provides test data for test T03_GET_InexistentCountryTest
+	@DataProvider(name="inexistentCountries")
+	public Object[] createInexistentCountries() {
+		return new Object[] {
+				"DX",
+				"xdcs",
+				"1966"
+		};
 	}
 }

@@ -14,7 +14,7 @@ This framework uses Rest-Assured Library With TestNG for API Testing
 **Task Mapping:**
 
 1) Task#1 : ApiTestSuite test method *T01_GET_AllCountriesTest*
-2) Task#2 : ApiTestSuite test method *T02a_GET_IndividualCountryTestforGB*, *T02b_GET_IndividualCountryTestforGB*,          *T02c_GET_IndividualCountryTestforGB*
+2) Task#2 : ApiTestSuite test method *T02_GET_IndividualCountryTestforCountryCodes*
 3) Task#3 : ApiTestSuite test method *T03_GET_InexistentCountryTest*
 3) Task#4 : ApiTestSuite test method *T04_POST_AddNewCountryTest*
 

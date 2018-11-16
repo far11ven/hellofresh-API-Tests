@@ -4,6 +4,7 @@ import org.testng.Assert;
 import org.testng.annotations.*;
 
 import com.hellofresh.api.globalutils.ApiUtils;
+import com.hellofresh.api.globalutils.TestUtils;
 import com.hellofresh.api.utilities.LOGGERUtil;
 import java.util.HashMap;
 import java.util.Map;
@@ -41,114 +42,63 @@ public class ApiTestSuite extends BaseTest{
 
 	}
 
+
+
 	/*
 	 * This is 1st test method which is related to API Task#2 i.e. "Get each country (US, DE and GB) individually and validate the response"
+	 * gets valid test data from dataProvider="validCountryCodes" from TestUtils.class
 	 */
 
-	@Test
-	public void T02a_GET_IndividualCountryTestforUS() {
-		LOGGER.info("Starting Test : T02a_GET_IndividualCountryTestforUS");
+	@Test(dataProvider="validCountryCodes", dataProviderClass = TestUtils.class)
+	public void T02_GET_IndividualCountryTestforCountryCodes(String countryCode) {
+		LOGGER.info("Starting Test : T02_GET_IndividualCountryTestforCountryCodes with country code " + countryCode);
 
 		ApiUtils.setBasePath("/get/iso2code");
 
-		res = ApiUtils.getResponsebyPath("/US");
+		res = ApiUtils.getResponsebyPath("/" + countryCode);
 		jp = ApiUtils.getJsonPath(res);
 
 		//Check if the HTTP Status received in response was 200
 		testUtils.checkStatusIs(res, 200);
 
-		//verify if GET US country response matches GET Individual countries schema
+		//verify if GET with countryCode response matches GET Individual countries schema
 		testUtils.validateResponseSchema(res, "matched-individual-country-schema.json");
 
 		//Check if the HTTP response has message "Country found matching code"
-		Assert.assertTrue(testUtils.checkCountryFoundMessage(res, "US"), "Country with code US is not found");
+		Assert.assertTrue(testUtils.checkCountryFoundMessage(res, countryCode), "Country with code " + countryCode + " is not found");
 
-		//Check that US country code is present in the response
-		Assert.assertTrue(testUtils.isCountryCodePresent(jp, "US"), "US Wasn't present in the list");
-
-
-	}
-
-	/*
-	 * This is 2nd test method which is related to API Task#2 i.e. "Get each country (US, DE and GB) individually and validate the response"
-	 */
-
-	@Test
-	public void T02b_GET_IndividualCountryTestforDE() {
-		LOGGER.info("Starting Test : T02b_GET_IndividualCountryTestforDE");
-
-		ApiUtils.setBasePath("/get/iso2code");
-
-		res = ApiUtils.getResponsebyPath("/DE");
-		jp = ApiUtils.getJsonPath(res);
-
-		//Check if the HTTP Status received in response was 200
-		testUtils.checkStatusIs(res, 200);
-
-		//verify if GET DE country response matches GET Individual countries schema
-		testUtils.validateResponseSchema(res, "matched-individual-country-schema.json");
-
-		//Check if the HTTP response has message "Country found matching code"
-		Assert.assertTrue(testUtils.checkCountryFoundMessage(res, "DE"), "Country with code DE is not found");
-
-		//Check that DE country code is present in the response
-		Assert.assertTrue(testUtils.isCountryCodePresent(jp, "DE"), "DE Wasn't present in the list");	
-
-	}
-
-	/*
-	 * This is 3rd test method which is related to API Task#2 i.e. "Get each country (US, DE and GB) individually and validate the response"
-	 */
-
-	@Test
-	public void T02c_GET_IndividualCountryTestforGB() {
-		LOGGER.info("Starting Test : T02c_GET_IndividualCountryTestforGB");
-
-		ApiUtils.setBasePath("/get/iso2code");
-
-		res = ApiUtils.getResponsebyPath("/GB");
-		jp = ApiUtils.getJsonPath(res);
-
-		//Check if the HTTP Status received in response was 200
-		testUtils.checkStatusIs(res, 200);
-
-		//verify if GET GB country response matches GET Individual countries schema
-		testUtils.validateResponseSchema(res, "matched-individual-country-schema.json");
-
-		//Check if the HTTP response has message "Country found matching code"
-		Assert.assertTrue(testUtils.checkCountryFoundMessage(res, "GB"), "Country with code GB is not found");
-
-		//Check that GB country code is present in the response
-		Assert.assertTrue(testUtils.isCountryCodePresent(jp, "GB"), "GB Wasn't present in the list");
+		//Check that country code is present in the response
+		Assert.assertTrue(testUtils.isCountryCodePresent(jp, countryCode), countryCode + " Wasn't present in the list");
 
 
 	}
 
 	/*
 	 * This is test method which is related to API Task#3 i.e. "Try to get information for inexistent countries and validate the response"
+	 * gets invalid test data from dataProvider="inexistentCountries" from TestUtils.class
 	 */
-	@Test
-	public void T03_GET_InexistentCountryTest() {
-		LOGGER.info("Starting Test : T03_GET_InexistentCountryTest");
+	@Test(dataProvider="inexistentCountries", dataProviderClass = TestUtils.class)
+	public void T03_GET_InexistentCountryTest(String countryName) {
+		LOGGER.info("Starting Test : T03_GET_InexistentCountryTest with country code value : " + countryName);
 
 		//Set BASEPATH to /get/iso2code
 		ApiUtils.setBasePath("/get/iso2code");
 
-		res = ApiUtils.getResponsebyPath("/DX");
+		res = ApiUtils.getResponsebyPath("/" + countryName);
 		jp = ApiUtils.getJsonPath(res);
 
 		//Check if the HTTP Status received in response was 200
 		testUtils.checkStatusIs(res, 200);
 
-		//verify if GET DX (inexistent) country response matches GET Inexistent country schema
+		//verify if GET countryName (inexistent) country response matches GET Inexistent country schema
 		testUtils.validateResponseSchema(res, "inexistent-country-schema.json");
 
 
 		//Check if the HTTP response has message "Country found matching code"
-		Assert.assertTrue(testUtils.checkInexistentCountryFoundMessage(res, "DX"), "Inexistent Country with code DX found");
+		Assert.assertTrue(testUtils.checkInexistentCountryFoundMessage(res, countryName), "Inexistent Country with code " + countryName + " found");
 
-		//Check that GB country code is present in the response
-		Assert.assertNull(jp.get("RestResponse.result"), "DX Wasn't present in the list");
+		//Check that countryName country code is present in the response
+		Assert.assertNull(jp.get("RestResponse.result"), countryName + " Was present in the list");
 
 	}
 
