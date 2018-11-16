@@ -1,8 +1,11 @@
-## API Automation Tests - Task#2
+# API Automation Tests - Task#2
 
 
-This framework uses Rest-Assured Library With TestNG for API Testing 
+This framework uses Rest-Assured Library With TestNG for API Testing
 
+- JsonPath for JSON Parsing
+- JsonSchemaMatchers for JSON Schema validations
+- It has TestNG DataProviders in ```"TestUtils.class"``` used for test cases #2 and #3
 - For logging Log4J is used
 - All tests are stored in ```"ApiTestSuite" class```, under package ```"com.hellofresh.api.tests"``` under Under ```src/test/java```
 - ```"com.hellofresh.api.globalutils"``` package which contains test helper methods
