@@ -1,19 +1,20 @@
 {
     "type": "object",
     "$schema": "http://json-schema.org/draft-03/schema",
-    "title": "root",
-    "id": "http://jsonschema.net",
+    "title": "The Root SCHEMA",
+    "description": "Contains message recieved for inexistent countries",
+    "id": "root",
     "required": true,
     "properties": {
         "RestResponse": {
             "type": "object",
-            "id": "http://jsonschema.net/greeting",
+            "id": "#/RestResponse",
             "required": true,
             "additionalProperties": false,
             "properties": {
                 "messages": {
                     "type": "array",
-                    "id": "http://jsonschema.net/greeting/firstName",
+                    "id": "#/RestResponse/messages",
                     "required": true
                 }
             }
